@@ -1,6 +1,19 @@
 ﻿import React, { useState } from 'react';
 import { Code2, Database, KeyRound, Terminal, Copy, Check, Play, Wrench } from 'lucide-react';
 
+// Safe Base64 UTF-8 Decoder (Supports Turkish and international unicode characters)
+function safeDecodeBase64Utf8(str: string): string {
+  try {
+    let base64 = str.replace(/-/g, '+').replace(/_/g, '/');
+    while (base64.length % 4) base64 += '=';
+    const binary = atob(base64);
+    const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+    return new TextDecoder().decode(bytes);
+  } catch {
+    return '';
+  }
+}
+
 export function DevForgeView() {
   const [activeTool, setActiveTool] = useState<'json' | 'curl' | 'sql' | 'regex' | 'jwt'>('json');
   const [copied, setCopied] = useState(false);
@@ -90,21 +103,29 @@ ORDER BY maintainability ASC;`);
 
   const decodeJwt = () => {
     try {
-      const parts = jwtInput.split('.');
+      const parts = jwtInput.trim().split('.');
       if (parts.length >= 2) {
-        setJwtHeader(JSON.stringify(JSON.parse(atob(parts[0])), null, 2));
-        setJwtPayload(JSON.stringify(JSON.parse(atob(parts[1])), null, 2));
+        const decodedHeader = safeDecodeBase64Utf8(parts[0]);
+        const decodedPayload = safeDecodeBase64Utf8(parts[1]);
+        if (decodedHeader) setJwtHeader(JSON.stringify(JSON.parse(decodedHeader), null, 2));
+        if (decodedPayload) setJwtPayload(JSON.stringify(JSON.parse(decodedPayload), null, 2));
       }
     } catch {
-      setJwtPayload(`// Invalid JWT token string`);
+      setJwtPayload(`// Invalid JWT token payload encoding`);
     }
   };
 
   const testRegex = () => {
     try {
-      const re = new RegExp(regexPattern, regexFlags);
+      // ReDoS / length guard
+      if (regexPattern.length > 500 || regexTestText.length > 50000) {
+        setRegexMatches(['Input exceeds maximum security length (500 chars for pattern, 50k for text).']);
+        return;
+      }
+      const safeFlags = regexFlags.replace(/[^gimsuy]/g, '');
+      const re = new RegExp(regexPattern, safeFlags);
       const matches = regexTestText.match(re) || [];
-      setRegexMatches(matches);
+      setRegexMatches(matches.slice(0, 100)); // Cap match results
     } catch (e: any) {
       setRegexMatches([`Regex Error: ${e.message}`]);
     }

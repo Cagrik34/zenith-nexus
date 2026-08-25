@@ -18,6 +18,10 @@ export class InMemoryFTSEngine {
     this.notes = notes;
   }
 
+  private escapeRegex(str: string): string {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
   public search(query: string, categoryFilter?: string): FTSResult[] {
     const rawTokens = query.toLowerCase().split(/\s+/).filter(t => t.trim().length > 0);
     if (rawTokens.length === 0) {
@@ -53,17 +57,28 @@ export class InMemoryFTSEngine {
           tokenScore += 6;
           matchedTokens.push(token);
         }
-        const occurrences = (contentLower.match(new RegExp(token, 'g')) || []).length;
-        if (occurrences > 0) {
-          tokenScore += Math.min(15, occurrences * 2);
-          matchedTokens.push(token);
+
+        try {
+          const safeEscaped = this.escapeRegex(token);
+          const occurrences = (contentLower.match(new RegExp(safeEscaped, 'g')) || []).length;
+          if (occurrences > 0) {
+            tokenScore += Math.min(15, occurrences * 2);
+            matchedTokens.push(token);
+          }
+        } catch {
+          // Fallback if regex construction fails
+          if (contentLower.includes(token)) {
+            tokenScore += 3;
+            matchedTokens.push(token);
+          }
         }
 
         score += tokenScore;
       }
 
       if (score > 0) {
-        const firstIndex = contentLower.indexOf(matchedTokens[0] || '');
+        const firstToken = matchedTokens[0] || '';
+        const firstIndex = contentLower.indexOf(firstToken);
         const start = Math.max(0, firstIndex - 40);
         const end = Math.min(note.content.length, firstIndex + 120);
         const snippet = (start > 0 ? '...' : '') + note.content.slice(start, end) + (end < note.content.length ? '...' : '');

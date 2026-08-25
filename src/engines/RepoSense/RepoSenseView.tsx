@@ -4,6 +4,10 @@ import { SAMPLE_ZENITH_CODEBASE } from '../../core/sampleRepos';
 import type { ModuleNode, DependencyGraph } from '../../types';
 import { AlertTriangle, FileCode, Search, RefreshCw, ZoomIn, ZoomOut, Eye } from 'lucide-react';
 
+const ALLOWED_EXTENSIONS = ['.ts', '.tsx', '.js', '.jsx', '.json', '.py', '.css', '.html', '.md', '.sql', '.rs', '.go'];
+const IGNORED_PATHS = ['node_modules', '.git', 'dist', 'build', '.next', '.vscode'];
+const MAX_FILE_SIZE_BYTES = 1024 * 1024; // 1 MB limit per file to prevent memory exhaustion
+
 export function RepoSenseView() {
   const [graph, setGraph] = useState<DependencyGraph>(() => parseRepositoryFiles(SAMPLE_ZENITH_CODEBASE));
   const [selectedNode, setSelectedNode] = useState<ModuleNode | null>(null);
@@ -182,17 +186,27 @@ export function RepoSenseView() {
     const files = e.target.files;
     if (!files || files.length === 0) return;
 
+    // Filter valid text code files within size limits
+    const validFiles = Array.from(files).filter(file => {
+      const path = (file.webkitRelativePath || file.name).toLowerCase();
+      if (IGNORED_PATHS.some(p => path.includes(`/${p}/`) || path.startsWith(`${p}/`))) return false;
+      if (file.size > MAX_FILE_SIZE_BYTES) return false;
+      return ALLOWED_EXTENSIONS.some(ext => path.endsWith(ext));
+    });
+
+    if (validFiles.length === 0) return;
+
     const parsedList: { path: string; content: string }[] = [];
     let readCount = 0;
 
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
+    for (let i = 0; i < validFiles.length; i++) {
+      const file = validFiles[i];
       const reader = new FileReader();
       reader.onload = (event) => {
         const text = event.target?.result as string;
         parsedList.push({ path: file.webkitRelativePath || file.name, content: text });
         readCount++;
-        if (readCount === files.length) {
+        if (readCount === validFiles.length) {
           const newGraph = parseRepositoryFiles(parsedList);
           setGraph(newGraph);
         }
