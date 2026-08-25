@@ -6,7 +6,7 @@ const INITIAL_MESSAGES: CopilotMessage[] = [
   {
     id: 'msg-1',
     role: 'assistant',
-    content: `Hello Ã‡aÄŸrÄ±! I am your **Zenith Nexus Grounded Copilot**. 
+    content: `Hello Çağrı! I am your **Zenith Nexus Grounded Copilot**. 
 
 I have indexed your active repositories and MindVault notes using local in-memory SQLite FTS5. You can ask me about architectural flows, circular dependencies, algorithm design, or TypeScript interfaces. Every answer I provide will reference exact file paths and line citations.`,
     timestamp: '01:30'
