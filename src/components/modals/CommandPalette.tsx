@@ -1,6 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { Search, Compass, Wrench, Brain, Bot, Mic, Code, FileText, CornerDownLeft } from 'lucide-react';
-import type { EngineTab } from '../types';
+import type { EngineTab } from '../../types';
 
 interface CommandPaletteProps {
   isOpen: boolean;

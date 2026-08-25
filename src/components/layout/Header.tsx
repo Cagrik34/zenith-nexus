@@ -1,5 +1,5 @@
 ﻿import { Search, Sparkles, ShieldCheck, Cpu } from 'lucide-react';
-import type { EngineTab } from '../types';
+import type { EngineTab } from '../../types';
 
 interface HeaderProps {
   activeTab: EngineTab;

@@ -1,4 +1,4 @@
-﻿name: Continuous Integration & Verification
+name: Continuous Integration & Verification
 
 on:
   push:
@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   validate-and-build:
-    name: TypeCheck & Bundle Optimization
+    name: Test, TypeCheck & Compile
     runs-on: ubuntu-latest
 
     steps:
@@ -28,13 +28,11 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Execute Automated Test Suite (Vitest)
+        run: npm test
+
       - name: Static Type Checking
         run: npx tsc -b
 
-      - name: Production Bundle Compilation
+      - name: Compile Optimized Production Bundle
         run: npm run build
-
-      - name: Bundle Size Verification
-        run: |
-          echo "Verifying compiled asset footprints..."
-          ls -lh dist/assets/

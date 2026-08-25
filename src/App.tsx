@@ -1,15 +1,8 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import type { EngineTab } from './types';
-import { Sidebar } from './components/Sidebar';
-import { Header } from './components/Header';
-import { CommandPalette } from './components/CommandPalette';
-import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
-
-import { RepoSenseView } from './engines/RepoSense/RepoSenseView';
-import { DevForgeView } from './engines/DevForge/DevForgeView';
-import { MindVaultView } from './engines/MindVault/MindVaultView';
-import { CopilotView } from './engines/Copilot/CopilotView';
-import { VoiceCaptureView } from './engines/VoiceCapture/VoiceCaptureView';
+import { ErrorBoundary, Header, Sidebar, CommandPalette } from './components';
+import { useKeyboardShortcuts } from './hooks';
+import { RepoSenseView, DevForgeView, MindVaultView, CopilotView, VoiceCaptureView } from './engines';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<EngineTab>('reposense');
@@ -21,27 +14,29 @@ export function App() {
   });
 
   return (
-    <div style={{ display: 'flex', width: '100vw', height: '100vh', overflow: 'hidden' }}>
-      <Sidebar activeTab={activeTab} onSelectTab={setActiveTab} />
+    <ErrorBoundary>
+      <div style={{ display: 'flex', width: '100vw', height: '100vh', overflow: 'hidden' }}>
+        <Sidebar activeTab={activeTab} onSelectTab={setActiveTab} />
 
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100vh', overflow: 'hidden' }}>
-        <Header activeTab={activeTab} onOpenPalette={() => setIsPaletteOpen(true)} />
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', height: '100vh', overflow: 'hidden' }}>
+          <Header activeTab={activeTab} onOpenPalette={() => setIsPaletteOpen(true)} />
 
-        <main style={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
-          {activeTab === 'reposense' && <RepoSenseView />}
-          {activeTab === 'devforge' && <DevForgeView />}
-          {activeTab === 'mindvault' && <MindVaultView />}
-          {activeTab === 'copilot' && <CopilotView />}
-          {activeTab === 'voice' && <VoiceCaptureView />}
-        </main>
+          <main style={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
+            {activeTab === 'reposense' && <RepoSenseView />}
+            {activeTab === 'devforge' && <DevForgeView />}
+            {activeTab === 'mindvault' && <MindVaultView />}
+            {activeTab === 'copilot' && <CopilotView />}
+            {activeTab === 'voice' && <VoiceCaptureView />}
+          </main>
+        </div>
+
+        <CommandPalette
+          isOpen={isPaletteOpen}
+          onClose={() => setIsPaletteOpen(false)}
+          onSelectTab={setActiveTab}
+        />
       </div>
-
-      <CommandPalette
-        isOpen={isPaletteOpen}
-        onClose={() => setIsPaletteOpen(false)}
-        onSelectTab={setActiveTab}
-      />
-    </div>
+    </ErrorBoundary>
   );
 }
 

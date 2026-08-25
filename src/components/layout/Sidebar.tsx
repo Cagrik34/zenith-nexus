@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { Compass, Wrench, Brain, Bot, Mic, Sparkles } from 'lucide-react';
-import type { EngineTab } from '../types';
+import type { EngineTab } from '../../types';
 
 interface SidebarProps {
   activeTab: EngineTab;
