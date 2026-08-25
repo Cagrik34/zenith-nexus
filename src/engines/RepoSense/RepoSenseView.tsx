@@ -315,11 +315,11 @@ export function RepoSenseView() {
             borderRadius: 'var(--radius-md)',
             fontSize: '0.72rem'
           }}>
-            <span style={{ color: '#00f2fe' }}>â— Component</span>
-            <span style={{ color: '#818cf8' }}>â— Hook</span>
-            <span style={{ color: '#34d399' }}>â— Utility</span>
-            <span style={{ color: '#fbbf24' }}>â— Service</span>
-            <span style={{ color: '#fb7185' }}>â— Worker</span>
+            <span style={{ color: '#00f2fe' }}>●  Component</span>
+            <span style={{ color: '#818cf8' }}>●  Hook</span>
+            <span style={{ color: '#34d399' }}>●  Utility</span>
+            <span style={{ color: '#fbbf24' }}>●  Service</span>
+            <span style={{ color: '#fb7185' }}>●  Worker</span>
           </div>
         </div>
 

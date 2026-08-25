@@ -146,8 +146,8 @@ ORDER BY maintainability ASC;`);
     <div style={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 65px)', padding: '1.25rem', gap: '1rem' }}>
       <div style={{ display: 'flex', gap: '0.65rem' }}>
         {[
-          { id: 'json', label: 'JSON â†’ TypeScript / Zod', icon: Code2 },
-          { id: 'curl', label: 'cURL â†’ Fetch / Axios / Python', icon: Terminal },
+          { id: 'json', label: 'JSON → TypeScript / Zod', icon: Code2 },
+          { id: 'curl', label: 'cURL → Fetch / Axios / Python', icon: Terminal },
           { id: 'sql', label: 'SQL In-Browser Sandbox', icon: Database },
           { id: 'regex', label: 'Regex Visualizer & Tester', icon: Wrench },
           { id: 'jwt', label: 'JWT Token Inspector', icon: KeyRound }

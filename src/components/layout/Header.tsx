@@ -13,11 +13,11 @@ interface HeaderProps {
 export function Header({ activeTab, onOpenPalette, metrics }: HeaderProps) {
   const getTabTitle = () => {
     switch (activeTab) {
-      case 'reposense': return 'RepoSense â€” Codebase Topology & AST Inspector';
-      case 'devforge': return 'DevForge â€” Instant Multi-Tool Swiss Army Knife';
-      case 'mindvault': return 'MindVault â€” Local Second Brain & FTS5 Index';
-      case 'copilot': return 'Grounded Copilot â€” Offline Context AI';
-      case 'voice': return 'Voice Capture â€” 60 FPS MECE Audio Scratchpad';
+      case 'reposense': return 'RepoSense — Codebase Topology & AST Inspector';
+      case 'devforge': return 'DevForge — Instant Multi-Tool Swiss Army Knife';
+      case 'mindvault': return 'MindVault — Local Second Brain & FTS5 Index';
+      case 'copilot': return 'Grounded Copilot — Offline Context AI';
+      case 'voice': return 'Voice Capture — 60 FPS MECE Audio Scratchpad';
     }
   };
 

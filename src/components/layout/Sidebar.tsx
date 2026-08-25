@@ -9,11 +9,11 @@ interface SidebarProps {
 
 export function Sidebar({ activeTab, onSelectTab }: SidebarProps) {
   const items: { id: EngineTab; label: string; icon: React.ComponentType<{ size?: number; color?: string }>; shortcut: string; badge?: string }[] = [
-    { id: 'reposense', label: 'RepoSense', icon: Compass, shortcut: 'âŒ˜1', badge: 'Topology' },
-    { id: 'devforge', label: 'DevForge', icon: Wrench, shortcut: 'âŒ˜2', badge: '5 Tools' },
-    { id: 'mindvault', label: 'MindVault', icon: Brain, shortcut: 'âŒ˜3', badge: 'FTS5' },
-    { id: 'copilot', label: 'Copilot', icon: Bot, shortcut: 'âŒ˜4', badge: 'RAG' },
-    { id: 'voice', label: 'Voice Scratchpad', icon: Mic, shortcut: 'âŒ˜5', badge: 'Audio' }
+    { id: 'reposense', label: 'RepoSense', icon: Compass, shortcut: '⌘1', badge: 'Topology' },
+    { id: 'devforge', label: 'DevForge', icon: Wrench, shortcut: '⌘2', badge: '5 Tools' },
+    { id: 'mindvault', label: 'MindVault', icon: Brain, shortcut: '⌘3', badge: 'FTS5' },
+    { id: 'copilot', label: 'Copilot', icon: Bot, shortcut: '⌘4', badge: 'RAG' },
+    { id: 'voice', label: 'Voice Scratchpad', icon: Mic, shortcut: '⌘5', badge: 'Audio' }
   ];
 
   return (
