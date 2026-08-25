@@ -1,61 +1,61 @@
-﻿# ğŸ›ï¸ Zenith Nexus â€” YÃ¼ksek PerformanslÄ± GeliÅŸtirici Zeka & Ã‡alÄ±ÅŸma Kokpiti
+# Zenith Nexus
 
-> SÄ±fÄ±r bulut baÄŸÄ±mlÄ±lÄ±ÄŸÄ±yla %100 istemci tarafÄ±nda Ã§alÄ±ÅŸan aÃ§Ä±k kaynaklÄ±, yÃ¼ksek performanslÄ± geliÅŸtirici iÅŸletim kokpiti ve kod tabanÄ± topoloji motoru.
+> Sıfır bulut bağımlılığıyla %100 istemci tarafında çalışan açık kaynaklı, yüksek performanslı geliştirici işletim kokpiti ve kod tabanı topoloji motoru.
 
-[CanlÄ± Kokpit](https://cagrik34.github.io/zenith-nexus/) â€¢ [Mimari](https://github.com/Cagrik34/zenith-nexus/blob/main/README.tr.md#mimari--veri-ak%C4%B1%C5%9F%C4%B1) â€¢ [Motor DoÄŸrulama & KÄ±yaslama](https://github.com/Cagrik34/zenith-nexus/blob/main/README.tr.md#-motor-do%C4%9Frulama--performans-k%C4%B1yaslamas%C4%B1) â€¢ [Kurulum](https://github.com/Cagrik34/zenith-nexus/blob/main/README.tr.md#-kurulum--kullan%C4%B1m) â€¢ [English Documentation](https://github.com/Cagrik34/zenith-nexus/blob/main/README.md)
-
----
-
-## ğŸ“Œ YÃ¶netici Ã–zeti
-
-**Zenith Nexus**, karmaÅŸÄ±k Ã§oklu repo yapÄ±larÄ±nÄ±, mimari karar kayÄ±tlarÄ±nÄ± (ADR) ve hÄ±zlÄ± geliÅŸtirme sÃ¼reÃ§lerini yÃ¶neten yazÄ±lÄ±m mÃ¼hendisleri ve mimarlar iÃ§in tasarlanmÄ±ÅŸ aÃ§Ä±k kaynaklÄ± bir geliÅŸtirici zeka stÃ¼dyosudur.
-
-KatÄ± bir **Ä°stemci TaraflÄ± Bellek Mimarisi (Client-Side Memory Architecture)** altÄ±nda Ã§alÄ±ÅŸÄ±r; kodlar, notlar veya tuÅŸ vuruÅŸlarÄ± asla harici sunuculara iletilmez. AST modÃ¼l ayrÄ±ÅŸtÄ±rmasÄ±, 120 FPS fiziksel topoloji dÃ¼zeni, SQLite FTS5 leksikal arama ve Ã§ok formatlÄ± tip dÃ¶nÃ¼ÅŸÃ¼mleri tamamen yerel tarayÄ±cÄ± belleÄŸinde gerÃ§ekleÅŸir.
+[Canlı Kokpit](https://cagrik34.github.io/zenith-nexus/) • [Mimari](https://github.com/Cagrik34/zenith-nexus/blob/main/README.tr.md#mimari--veri-akışı) • [Motor Doğrulama & Kıyaslama](https://github.com/Cagrik34/zenith-nexus/blob/main/README.tr.md#motor-doğrulama--performans-kıyaslaması) • [Kurulum](https://github.com/Cagrik34/zenith-nexus/blob/main/README.tr.md#kurulum--kullanım) • [English Documentation](https://github.com/Cagrik34/zenith-nexus/blob/main/README.md)
 
 ---
 
-## ğŸ“Š Motor DoÄŸrulama & Performans KÄ±yaslamasÄ±
+## Yönetici Özeti
 
-TÃ¼m hesaplama modÃ¼lleri, bellek sÄ±nÄ±rlarÄ± ve iÅŸ parÃ§acÄ±ÄŸÄ± (worker) hatlarÄ± otomatik testlerle doÄŸrulanmÄ±ÅŸtÄ±r:
+**Zenith Nexus**, karmaşık çoklu repo yapılarını, mimari karar kayıtlarını (ADR) ve hızlı geliştirme süreçlerini yöneten yazılım mühendisleri ve mimarlar için tasarlanmış açık kaynaklı bir geliştirici zeka stüdyosudur.
 
-| Alt Sistem / ModÃ¼l | Algoritma & Metodoloji | DoÄŸrulama Durumu | Ã‡alÄ±ÅŸma Gecikmesi |
+Katı bir **İstemci Taraflı Bellek Mimarisi (Client-Side Memory Architecture)** altında çalışır; kodlar, notlar veya tuş vuruşları asla harici sunuculara iletilmez. AST modül ayrıştırması, 120 FPS fiziksel topoloji düzeni, SQLite FTS5 leksikal arama ve çok formatlı tip dönüşümleri tamamen yerel tarayıcı belleğinde gerçekleşir.
+
+---
+
+## Motor Doğrulama & Performans Kıyaslaması
+
+Tüm hesaplama modülleri, bellek sınırları ve iş parçacığı (worker) hatları otomatik testlerle doğrulanmıştır:
+
+| Alt Sistem / Modül | Algoritma & Metodoloji | Doğrulama Durumu | Çalışma Gecikmesi |
 | :--- | :--- | :---: | :---: |
-| **RepoSense AST Motoru** | Ã–zyinelemeli Regex & AST ModÃ¼l AyrÄ±ÅŸtÄ±rÄ±cÄ± | **%100 BAÅARILI** | < 4.2ms (1.000 dosya) |
-| **Topoloji Fizik DÃ¼zeni** | 120 FPS Yay-Ä°tme DonanÄ±m Canvas Motoru | **%100 BAÅARILI** | < 8.3ms / kare |
-| **DÃ¶ngÃ¼sel BaÄŸÄ±mlÄ±lÄ±k Tespiti** | Ä°ki ParÃ§alÄ± KomÅŸuluk Matrisi Halka TaramasÄ± | **%100 BAÅARILI** | < 0.15ms |
-| **SQLite FTS5 WASM Motoru** | Bellek-Ä°Ã§i BM25 Leksikal Ä°ndeksleme & Arama | **%100 BAÅARILI** | < 2.1ms (50.000 not) |
-| **DevForge Tip TÃ¼retici** | Ã–zyinelemeli JSON-TypeScript AST Sentezleyici | **%100 BAÅARILI** | < 0.35ms |
-| **DevForge cURL Ã‡evirici** | RFC 7230 HTTP AyrÄ±ÅŸtÄ±rÄ±cÄ± & Ä°stemci Kod Ãœreteci | **%100 BAÅARILI** | < 0.20ms |
-| **Unicode JWT Ã‡Ã¶zÃ¼cÃ¼** | Base64url TextDecoder & UTF-8 Ä°ddia AyrÄ±ÅŸtÄ±rÄ±cÄ± | **%100 BAÅARILI** | < 0.08ms |
-| **Ses DalgasÄ± Telemetrisi** | Web Audio API SinÃ¼zoidal Canvas GÃ¶rselleÅŸtirici | **%100 BAÅARILI** | 60 FPS Kilitli |
-| **ReDoS Savunma KatmanÄ±** | SÄ±nÄ±rlÄ± RegEx DeÄŸerlendirme & Girdi KorumasÄ± | **%100 BAÅARILI** | DoÄŸrulandÄ± |
-| **SÄ±fÄ±r-Bulut Ä°zolasyonu** | Yerel-Ã–ncelikli YalÄ±tÄ±lmÄ±ÅŸ Bellek DÃ¶ngÃ¼sÃ¼ | **%100 BAÅARILI** | DoÄŸrulandÄ± |
+| **RepoSense AST Motoru** | Özyinelemeli Regex & AST Modül Ayrıştırıcı | **%100 BAŞARILI** | < 4.2ms (1.000 dosya) |
+| **Topoloji Fizik Düzeni** | 120 FPS Yay-İtme Donanım Canvas Motoru | **%100 BAŞARILI** | < 8.3ms / kare |
+| **Döngüsel Bağımlılık Tespiti** | İki Parçalı Komşuluk Matrisi Halka Taraması | **%100 BAŞARILI** | < 0.15ms |
+| **SQLite FTS5 WASM Motoru** | Bellek-İçi BM25 Leksikal İndeksleme & Arama | **%100 BAŞARILI** | < 2.1ms (50.000 not) |
+| **DevForge Tip Türetici** | Özyinelemeli JSON-TypeScript AST Sentezleyici | **%100 BAŞARILI** | < 0.35ms |
+| **DevForge cURL Çevirici** | RFC 7230 HTTP Ayrıştırıcı & İstemci Kod Üreteci | **%100 BAŞARILI** | < 0.20ms |
+| **Unicode JWT Çözücü** | Base64url TextDecoder & UTF-8 İddia Ayrıştırıcı | **%100 BAŞARILI** | < 0.08ms |
+| **Ses Dalgası Telemetrisi** | Web Audio API Sinüzoidal Canvas Görselleştirici | **%100 BAŞARILI** | 60 FPS Kilitli |
+| **ReDoS Savunma Katmanı** | Sınırlı RegEx Değerlendirme & Girdi Koruması | **%100 BAŞARILI** | Doğrulandı |
+| **Sıfır-Bulut İzolasyonu** | Yerel-Öncelikli Yalıtılmış Bellek Döngüsü | **%100 BAŞARILI** | Doğrulandı |
 
 ---
 
-## ğŸ—ï¸ Mimari & Veri AkÄ±ÅŸÄ±
+## Mimari & Veri Akışı
 
 ```mermaid
 graph TD
-    subgraph UI_Layer ["ArayÃ¼z KatmanÄ± (React 19 + 120 FPS DonanÄ±m Canvas)"]
+    subgraph UI_Layer ["Arayüz Katmanı (React 19 + 120 FPS Donanım Canvas)"]
         Palette["Evrensel Komut Paleti (Cmd + K)"]
         RepoSenseUI["RepoSense Kod Topolojisi"]
-        DevForgeUI["DevForge GeliÅŸtirici Ä°sviÃ§re Ã‡akÄ±sÄ±"]
-        VaultUI["MindVault Yerel Ä°kinci Beyin"]
-        CopilotUI["DayanaklÄ± BaÄŸlam Copilot"]
-        VoiceUI["60 FPS Ses DalgasÄ± GÃ¶rselleÅŸtirici"]
+        DevForgeUI["DevForge Geliştirici İsviçre Çakısı"]
+        VaultUI["MindVault Yerel İkinci Beyin"]
+        CopilotUI["Dayanaklı Bağlam Copilot"]
+        VoiceUI["60 FPS Ses Dalgası Görselleştirici"]
     end
 
-    subgraph Worker_Layer ["Ana Ä°ÅŸ ParÃ§acÄ±ÄŸÄ± DÄ±ÅŸÄ± Web Worker'lar"]
-        ASTWorker["AST ModÃ¼l & BaÄŸÄ±mlÄ±lÄ±k Worker'Ä±"]
-        GraphPhysics["120 FPS Kuvvet-YÃ¶nelimli Fizik Motoru"]
+    subgraph Worker_Layer ["Ana İş Parçacığı Dışı Web Worker'lar"]
+        ASTWorker["AST Modül & Bağımlılık Worker'ı"]
+        GraphPhysics["120 FPS Kuvvet-Yönelimli Fizik Motoru"]
         FTSWorker["SQLite FTS5 WASM BM25 Arama Motoru"]
     end
 
-    subgraph Memory_Layer ["YalÄ±tÄ±lmÄ±ÅŸ Ä°stemci BelleÄŸi"]
-        CodeMemory["Bellek-Ä°Ã§i AST Sembol GrafiÄŸi"]
-        SQLiteMemory["GÃ¶mÃ¼lÃ¼ SQLite WASM VeritabanÄ±"]
-        LocalStorage["Ä°stemci Depolama & Yerel Durum"]
+    subgraph Memory_Layer ["Yalıtılmış İstemci Belleği"]
+        CodeMemory["Bellek-İçi AST Sembol Grafiği"]
+        SQLiteMemory["Gömülü SQLite WASM Veritabanı"]
+        LocalStorage["İstemci Depolama & Yerel Durum"]
     end
 
     Palette --> RepoSenseUI & DevForgeUI & VaultUI & CopilotUI & VoiceUI
@@ -67,120 +67,120 @@ graph TD
 
 ---
 
-## ğŸš€ Ã‡ekirdek Yetenekler & Alt Sistemler
+## Çekirdek Yetenekler & Alt Sistemler
 
-### 1. ğŸ§­ RepoSense: Kod TabanÄ± Topolojisi & AST RÃ¶ntgeni
-- **Ä°ÅŸ ParÃ§acÄ±ÄŸÄ± DÄ±ÅŸÄ± AST AyrÄ±ÅŸtÄ±rma:** Proje klasÃ¶rlerini Ã¶zyinelemeli olarak tarar; modÃ¼lleri BileÅŸenler, Hook'lar, YardÄ±mcÄ±lar, Servisler ve Tipler olarak sÄ±nÄ±flandÄ±rÄ±r.
-- **120 FPS Kuvvet-YÃ¶nelimli Grafik:** SÃ¼rtÃ¼nme sÃ¶nÃ¼mleme ve dinamik merkezleme iÃ§eren donanÄ±m hÄ±zlandÄ±rmalÄ± Canvas simÃ¼lasyonu.
-- **DÃ¶ngÃ¼sel BaÄŸÄ±mlÄ±lÄ±k Tespiti:** KarÅŸÄ±lÄ±klÄ± iÃ§e aktarma dÃ¶ngÃ¼lerini (`A â†” B`) tespit eder ve uyarÄ± halkalarÄ±yla gÃ¶rselleÅŸtirir.
-- **SÃ¼rdÃ¼rÃ¼lebilirlik & SaÄŸlÄ±k Ä°ndeksi:** BaÄŸlantÄ± derinliÄŸine dayalÄ± gerÃ§ek zamanlÄ± karmaÅŸÄ±klÄ±k puanlamasÄ±.
+### 1. RepoSense: Kod Tabanı Topolojisi & AST Röntgeni
+- **İş Parçacığı Dışı AST Ayrıştırma:** Proje klasörlerini özyinelemeli olarak tarar; modülleri Bileşenler, Hook'lar, Yardımcılar, Servisler ve Tipler olarak sınıflandırır.
+- **120 FPS Kuvvet-Yönelimli Grafik:** Sürtünme sönümleme ve dinamik merkezleme içeren donanım hızlandırmalı Canvas simülasyonu.
+- **Döngüsel Bağımlılık Tespiti:** Karşılıklı içe aktarma döngülerini (A ↔ B) tespit eder ve uyarı halkalarıyla görselleştirir.
+- **Sürdürülebilirlik & Sağlık İndeksi:** Bağlantı derinliğine dayalı gerçek zamanlı karmaşıklık puanlaması.
 
-### 2. âš¡ DevForge: Ã‡ok AraÃ§lÄ± GeliÅŸtirici Ä°sviÃ§re Ã‡akÄ±sÄ±
-- **JSON â†’ TypeScript & Zod:** Ä°Ã§ iÃ§e nesneleri, dizileri, opsiyonel alanlarÄ± ve Zod Ã§alÄ±ÅŸma zamanÄ± ÅŸemalarÄ±nÄ± anÄ±nda Ã¼retir.
-- **cURL Kod Ã‡evirici:** Ham cURL isteklerini temiz TypeScript `fetch`, `axios` veya Python `requests` koduna dÃ¶nÃ¼ÅŸtÃ¼rÃ¼r.
-- **TarayÄ±cÄ±-Ä°Ã§i SQLite Sandbox:** CanlÄ± tablo ÅŸemasÄ± ve anlÄ±k sorgu Ã§alÄ±ÅŸtÄ±rma ortamÄ±.
-- **Regex GÃ¶rselleÅŸtirici:** Bayrak destekli gÃ¼venli regex test ve token eÅŸleÅŸme dÃ¶kÃ¼mÃ¼.
-- **Unicode JWT Ã‡Ã¶zÃ¼cÃ¼:** TÃ¼rkÃ§e ve uluslararasÄ± UTF-8 karakterleri hatasÄ±z Ã§Ã¶zen JWT denetleyicisi.
+### 2. DevForge: Çok Araçlı Geliştirici İsviçre Çakısı
+- **JSON → TypeScript & Zod:** İç içe nesneleri, dizileri, opsiyonel alanları ve Zod çalışma zamanı şemalarını anında üretir.
+- **cURL Kod Çevirici:** Ham cURL isteklerini temiz TypeScript fetch, axios veya Python requests koduna dönüştürür.
+- **Tarayıcı-İçi SQLite Sandbox:** Canlı tablo şeması ve anlık sorgu çalıştırma ortamı.
+- **Regex Görselleştirici:** Bayrak destekli güvenli regex test ve token eşleşme dökümü.
+- **Unicode JWT Çözücü:** Türkçe ve uluslararası UTF-8 karakterleri hatasız çözen JWT denetleyicisi.
 
-### 3. ğŸ§  MindVault: SÄ±fÄ±r-Bulut HafÄ±za & SQLite FTS5
-- **YapÄ±landÄ±rÄ±lmÄ±ÅŸ MÃ¼hendislik KayÄ±tlarÄ±:** Mimari Karar KayÄ±tlarÄ± (ADR), McKinsey MECE problem aÄŸaÃ§larÄ± ve gÃ¼nlÃ¼k dev-loglar.
-- **<5ms Bellek-Ä°Ã§i FTS5 Arama:** BM25 leksikal arama motoru ile anlÄ±k iÃ§erik vurgulama.
-- **Ã‡ift YÃ¶nlÃ¼ Kod BaÄŸlantÄ±sÄ±:** Mimari kararlarÄ± doÄŸrudan kod tabanÄ± sembollerine baÄŸlama.
+### 3. MindVault: Sıfır-Bulut Hafıza & SQLite FTS5
+- **Yapılandırılmış Mühendislik Kayıtları:** Mimari Karar Kayıtları (ADR), McKinsey MECE problem ağaçları ve günlük dev-loglar.
+- **<5ms Bellek-İçi FTS5 Arama:** BM25 leksikal arama motoru ile anlık içerik vurgulama.
+- **Çift Yönlü Kod Bağlantısı:** Mimari kararları doğrudan kod tabanı sembollerine bağlama.
 
-### 4. ğŸ¤– DayanaklÄ± BaÄŸlam Copilot (Grounded AI)
-- **Deterministik BaÄŸlam Sentezi:** YÃ¼klenen kod tabanÄ± ve MindVault notlarÄ±na dayalÄ± kesin teknik yanÄ±tlar.
-- **Kaynak AlÄ±ntÄ± Rozetleri:** Her yanÄ±ta tÄ±klanabilir dosya ve satÄ±r referanslarÄ± (`[dosya:L10-30]`) ekler.
+### 4. Dayanaklı Bağlam Copilot (Grounded AI)
+- **Deterministik Bağlam Sentezi:** Yüklenen kod tabanı ve MindVault notlarına dayalı kesin teknik yanıtlar.
+- **Kaynak Alıntı Rozetleri:** Her yanıta tıklanabilir dosya ve satır referansları ([dosya:L10-30]) ekler.
 
-### 5. ğŸ™ï¸ Sesli DÃ¼ÅŸÃ¼nce Yakalama & Telemetri
-- **60 FPS CanlÄ± Dalga Formu:** Web Audio API ile gÃ¼Ã§lendirilmiÅŸ Canvas frekans gÃ¶rselleÅŸtirici.
-- **MECE DÃ¼ÅŸÃ¼nce YapÄ±landÄ±rma:** KonuÅŸulan ses akÄ±ÅŸÄ±nÄ± temel hedefler, eylem maddeleri ve teknik ÅŸartnameye dÃ¶nÃ¼ÅŸtÃ¼rÃ¼r.
+### 5. Sesli Düşünce Yakalama & Telemetri
+- **60 FPS Canlı Dalga Formu:** Web Audio API ile güçlendirilmiş Canvas frekans görselleştirici.
+- **MECE Düşünce Yapılandırma:** Konuşulan ses akışını temel hedefler, eylem maddeleri ve teknik şartnameye dönüştürür.
 
 ---
 
-## âŒ¨ï¸ Klavye KÄ±sayollarÄ±
+## Klavye Kısayolları
 
-| KÄ±sayol | Ä°ÅŸlev |
+| Kısayol | İşlev |
 | :--- | :--- |
-| `Cmd + K` / `Ctrl + K` | Evrensel Komut Paleti & BulanÄ±k Arama |
+| `Cmd + K` / `Ctrl + K` | Evrensel Komut Paleti & Bulanık Arama |
 | `Cmd + 1` | RepoSense (Topoloji & Grafikler) |
-| `Cmd + 2` | DevForge (5 GeliÅŸtirici AracÄ±) |
-| `Cmd + 3` | MindVault (Ä°kinci Beyin & FTS5) |
-| `Cmd + 4` | Grounded Copilot (BaÄŸlam Yapay ZekasÄ±) |
+| `Cmd + 2` | DevForge (5 Geliştirici Aracı) |
+| `Cmd + 3` | MindVault (İkinci Beyin & FTS5) |
+| `Cmd + 4` | Grounded Copilot (Bağlam Yapay Zekası) |
 | `Cmd + 5` | Voice Scratchpad (Ses Yakalama) |
-| `Esc` | AÃ§Ä±k paneli / paleti kapat |
+| `Esc` | Açık paneli / paleti kapat |
 
 ---
 
-## ğŸ’» Kurulum & KullanÄ±m
+## Kurulum & Kullanım
 
-### CanlÄ± Kokpit
-SÄ±fÄ±r kurulumla doÄŸrudan tarayÄ±cÄ±nÄ±zda Ã§alÄ±ÅŸtÄ±rÄ±n:  
-ğŸ‘‰ **[https://cagrik34.github.io/zenith-nexus/](https://cagrik34.github.io/zenith-nexus/)**
+### Canlı Kokpit
+Sıfır kurulumla doğrudan tarayıcınızda çalıştırın:  
+👉 **[https://cagrik34.github.io/zenith-nexus/](https://cagrik34.github.io/zenith-nexus/)**
 
-### Yerel GeliÅŸtirme
+### Yerel Geliştirme
 
 ```bash
-# 1. Depoyu klonlayÄ±n
+# 1. Depoyu klonlayın
 git clone https://github.com/Cagrik34/zenith-nexus.git
 cd zenith-nexus
 
-# 2. BaÄŸÄ±mlÄ±lÄ±klarÄ± yÃ¼kleyin
+# 2. Bağımlılıkları yükleyin
 npm install
 
-# 3. GeliÅŸtirici sunucusunu baÅŸlatÄ±n
+# 3. Geliştirici sunucusunu başlatın
 npm run dev
 
-# 4. Ãœretim derlemesi alÄ±n
+# 4. Üretim derlemesi alın
 npm run build
 ```
 
 ---
 
-## ğŸ“ Dizin YapÄ±sÄ±
+## Dizin Yapısı
 
 ```
 zenith-nexus/
-â”œâ”€â”€ .github/
-â”‚   â””â”€â”€ workflows/
-â”‚       â”œâ”€â”€ ci.yml              # SÃ¼rekli Entegrasyon & statik doÄŸrulama
-â”‚       â””â”€â”€ deploy.yml          # Otomatik GitHub Pages daÄŸÄ±tÄ±m hattÄ±
-â”œâ”€â”€ public/                     # Statik varlÄ±klar ve ikonlar
-â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ components/             # Genel dÃ¼zen bileÅŸenleri (Header, Sidebar, Palette)
-â”‚   â”œâ”€â”€ core/                   # AST ayrÄ±ÅŸtÄ±rÄ±cÄ±, bellek-iÃ§i FTS5 arama motoru, veri setleri
-â”‚   â”œâ”€â”€ engines/
-â”‚   â”‚   â”œâ”€â”€ Copilot/            # DayanaklÄ± Ã§evrimdÄ±ÅŸÄ± RAG Copilot gÃ¶rÃ¼nÃ¼mÃ¼
-â”‚   â”‚   â”œâ”€â”€ DevForge/           # 5'i 1 arada geliÅŸtirici araÃ§ merkezi
-â”‚   â”‚   â”œâ”€â”€ MindVault/          # Markdown Ä°kinci Beyin & ADR yÃ¶neticisi
-â”‚   â”‚   â”œâ”€â”€ RepoSense/          # 120 FPS Canvas kod tabanÄ± topoloji gÃ¶rselleÅŸtirici
-â”‚   â”‚   â””â”€â”€ VoiceCapture/       # 60 FPS Web Audio gÃ¶rselleÅŸtirici & MECE Ã§Ä±karÄ±cÄ±
-â”‚   â”œâ”€â”€ hooks/                  # Reaktif kancalar & klavye kÄ±sayol yÃ¶neticisi
-â”‚   â”œâ”€â”€ styles/                 # TasarÄ±m belirteÃ§leri & cam efekti sistemi
-â”‚   â”œâ”€â”€ types/                  # KatÄ± TypeScript tip tanÄ±mlarÄ±
-â”‚   â”œâ”€â”€ App.tsx                 # Ana kokpit orkestratÃ¶rÃ¼
-â”‚   â”œâ”€â”€ index.css               # Temel CSS belirteÃ§leri ve animasyonlar
-â”‚   â””â”€â”€ main.tsx                # React 19 baÅŸlatma noktasÄ±
-â”œâ”€â”€ index.html                  # HTML5 giriÅŸ dokÃ¼manÄ±
-â”œâ”€â”€ package.json                # BaÄŸÄ±mlÄ±lÄ±klar ve derleme komutlarÄ±
-â”œâ”€â”€ tsconfig.json               # KatÄ± TypeScript yapÄ±landÄ±rmasÄ±
-â””â”€â”€ vite.config.ts              # Vite 6 bundle optimizasyonu ve gÃ¶receli yollar
+├── .github/
+│   └── workflows/
+│       ├── ci.yml              # Sürekli Entegrasyon & statik doğrulama
+│       └── deploy.yml          # Otomatik GitHub Pages dağıtım hattı
+├── public/                     # Statik varlıklar ve ikonlar
+├── src/
+│   ├── components/             # Genel düzen bileşenleri (Header, Sidebar, Palette)
+│   ├── core/                   # AST ayrıştırıcı, bellek-içi FTS5 arama motoru, veri setleri
+│   ├── engines/
+│   │   ├── Copilot/            # Dayanaklı çevrimdışı RAG Copilot görünümü
+│   │   ├── DevForge/           # 5'i 1 arada geliştirici araç merkezi
+│   │   ├── MindVault/          # Markdown İkinci Beyin & ADR yöneticisi
+│   │   ├── RepoSense/          # 120 FPS Canvas kod tabanı topoloji görselleştirici
+│   │   └── VoiceCapture/       # 60 FPS Web Audio görselleştirici & MECE çıkarıcı
+│   ├── hooks/                  # Reaktif kancalar & klavye kısayol yöneticisi
+│   ├── styles/                 # Tasarım belirteçleri & cam efekti sistemi
+│   ├── types/                  # Katı TypeScript tip tanımları
+│   ├── App.tsx                 # Ana kokpit orkestratörü
+│   ├── index.css               # Temel CSS belirteçleri ve animasyonlar
+│   └── main.tsx                # React 19 başlatma noktası
+├── index.html                  # HTML5 giriş dokümanı
+├── package.json                # Bağımlılıklar ve derleme komutları
+├── tsconfig.json               # Katı TypeScript yapılandırması
+└── vite.config.ts              # Vite 6 bundle optimizasyonu ve göreceli yollar
 ```
 
 ---
 
-## ğŸ”’ GÃ¼venlik & Ä°stemci TaraflÄ± Gizlilik
+## Güvenlik & İstemci Taraflı Gizlilik
 
-- **Ä°stemci TaraflÄ± Ä°zolasyon:** TÃ¼m veriler, kod tabanlarÄ± ve notlar yalnÄ±zca tarayÄ±cÄ± belleÄŸinde kalÄ±r. SÄ±fÄ±r telemetri iletilir.
-- **XSS & Enjeksiyon KorumasÄ±:** `dangerouslySetInnerHTML` veya `eval()` iÃ§ermeyen yerel React 19 DOM kaÃ§Ä±ÅŸ mekanizmasÄ±.
-- **ReDoS KorumasÄ±:** Regex girdi kalÄ±plarÄ± `escapeRegex()` ile filtrelenir ve karakter sÄ±nÄ±rlarÄ±yla korunur.
-- **Bellek AÅŸÄ±mÄ± KorumasÄ±:** RepoSense dosya yÃ¼klemelerinde 1 MB sÄ±nÄ±rÄ± uygulanÄ±r; `node_modules` ve binary dosyalar yoksayÄ±lÄ±r.
-- **En DÃ¼ÅŸÃ¼k AyrÄ±calÄ±klÄ± CI/CD:** GitHub Actions iÅŸ akÄ±ÅŸlarÄ± minimum yetkilerle (`pages: write`, `contents: read`) Ã§alÄ±ÅŸÄ±r.
+- **İstemci Taraflı İzolasyon:** Tüm veriler, kod tabanları ve notlar yalnızca tarayıcı belleğinde kalır. Sıfır telemetri iletilir.
+- **XSS & Enjeksiyon Koruması:** dangerouslySetInnerHTML veya eval() içermeyen yerel React 19 DOM kaçış mekanizması.
+- **ReDoS Koruması:** Regex girdi kalıpları escapeRegex() ile filtrelenir ve karakter sınırlarıyla korunur.
+- **Bellek Aşımı Koruması:** RepoSense dosya yüklemelerinde 1 MB sınırı uygulanır; node_modules ve binary dosyalar yoksayılır.
+- **En Düşük Ayrıcalıklı CI/CD:** GitHub Actions iş akışları minimum yetkilerle (pages: write, contents: read) çalışır.
 
 ---
 
-## ğŸ“„ Lisans & Telif HakkÄ±
+## Lisans & Telif Hakkı
 
-MIT LisansÄ± altÄ±nda daÄŸÄ±tÄ±lmaktadÄ±r. Detaylar iÃ§in [LICENSE](https://github.com/Cagrik34/zenith-nexus/blob/main/LICENSE) dosyasÄ±na bakÄ±nÄ±z.
+MIT Lisansı altında dağıtılmaktadır. Detaylar için [LICENSE](https://github.com/Cagrik34/zenith-nexus/blob/main/LICENSE) dosyasına bakınız.
 
-**Yazar:** Ã‡aÄŸrÄ± Giray KeÅŸan  
-**Telif HakkÄ±:** Â© 2026 Ã‡aÄŸrÄ± Giray KeÅŸan. TÃ¼m HaklarÄ± SaklÄ±dÄ±r.
+**Yazar:** Çağrı Giray Keşan  
+**Telif Hakkı:** © 2026 Çağrı Giray Keşan. Tüm Hakları Saklıdır.

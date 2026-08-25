@@ -1,20 +1,20 @@
-﻿# ğŸ›ï¸ Zenith Nexus â€” High-Performance Developer Intelligence & Workflow OS
+# Zenith Nexus
 
-> An open-source, high-performance developer operating cockpit and codebase topology engine running 100% client-side with zero cloud dependencies.
+> High-performance, browser-native developer operating cockpit and codebase topology engine running 100% client-side with zero cloud dependencies.
 
-[Live Cockpit](https://cagrik34.github.io/zenith-nexus/) â€¢ [Architecture](https://github.com/Cagrik34/zenith-nexus#architecture--data-flow) â€¢ [Engine Benchmarks](https://github.com/Cagrik34/zenith-nexus#-engine-benchmarks--verification) â€¢ [Getting Started](https://github.com/Cagrik34/zenith-nexus#-getting-started) â€¢ [TÃ¼rkÃ§e DokÃ¼mantasyon](https://github.com/Cagrik34/zenith-nexus/blob/main/README.tr.md)
+[Live Cockpit](https://cagrik34.github.io/zenith-nexus/) • [Architecture](https://github.com/Cagrik34/zenith-nexus#architecture--data-flow) • [Engine Benchmarks](https://github.com/Cagrik34/zenith-nexus#-engine-benchmarks--verification) • [Getting Started](https://github.com/Cagrik34/zenith-nexus#-getting-started) • [Türkçe Dokümantasyon](https://github.com/Cagrik34/zenith-nexus/blob/main/README.tr.md)
 
 ---
 
-## ğŸ“Œ Executive Overview
+## Executive Overview
 
-**Zenith Nexus** is an open-source, high-performance developer intelligence studio designed for software engineers, architects, and researchers managing complex multi-repository codebases, architectural decision records (ADRs), and rapid development workflows.
+Zenith Nexus is an open-source, high-performance developer intelligence studio designed for software engineers, architects, and researchers managing complex multi-repository codebases, architectural decision records (ADRs), and rapid development workflows.
 
 Operating under a strict **Client-Side Memory Architecture**, zero proprietary code, notes, or keystrokes are transmitted to external servers. Abstract Syntax Tree (AST) module parsing, 120 FPS force-directed physics layout, in-memory SQLite FTS5 lexical token searching, and multi-format type derivations execute entirely within local browser memory.
 
 ---
 
-## ğŸ“Š Engine Benchmarks & Verification
+## Engine Benchmarks & Verification
 
 All computation modules, memory boundaries, and off-thread worker pipelines are verified by automated static and runtime tests:
 
@@ -33,14 +33,14 @@ All computation modules, memory boundaries, and off-thread worker pipelines are 
 
 ---
 
-## ğŸ—ï¸ Architecture & Data Flow
+## Architecture & Data Flow
 
 ```mermaid
 graph TD
     subgraph UI_Layer ["UI Layer (React 19 + 120 FPS Hardware Canvas)"]
         Palette["Universal Command Palette (Cmd + K)"]
         RepoSenseUI["RepoSense Codebase Topology"]
-        DevForgeUI["DevForge Developer Swiss Army Knife"]
+        DevForgeUI["DevForge Developer Multi-Tool"]
         VaultUI["MindVault Local Second Brain"]
         CopilotUI["Grounded Context Copilot"]
         VoiceUI["60 FPS Audio Waveform Visualizer"]
@@ -67,37 +67,37 @@ graph TD
 
 ---
 
-## ğŸš€ Core Capabilities & Subsystems
+## Core Capabilities & Subsystems
 
-### 1. ğŸ§­ RepoSense: Codebase Topology & AST Inspector
+### 1. RepoSense: Codebase Topology & AST Inspector
 - **Off-Thread AST Parsing:** Recursively ingests project directories, categorizing modules into Components, Hooks, Utilities, Services, Workers, and Types without main-thread blocking.
 - **120 FPS Force-Directed Graph:** Hardware-accelerated Canvas simulation with friction damping, dynamic centering, and node repulsion.
-- **Circular Dependency Detection:** Detects mutual import rings (`A â†” B`) and renders them with high-visibility glowing warnings.
+- **Circular Dependency Detection:** Detects mutual import rings (A ↔ B) and renders them with high-visibility diagnostic warnings.
 - **Maintainability & Health Index:** Real-time cyclomatic complexity heuristic scoring based on coupling depth and token distribution.
 
-### 2. âš¡ DevForge: Multi-Tool Developer Utility Suite
-- **JSON â†’ TypeScript & Zod:** Real-time recursive type inference supporting nested objects, arrays, optional fields, and Zod runtime schema generation.
-- **cURL Code Synthesizer:** Translates raw cURL commands into clean, idiomatic TypeScript `fetch`, `axios`, or Python `requests`.
+### 2. DevForge: Multi-Tool Developer Utility Suite
+- **JSON → TypeScript & Zod:** Real-time recursive type inference supporting nested objects, arrays, optional fields, and Zod runtime schema generation.
+- **cURL Code Synthesizer:** Translates raw cURL commands into clean, idiomatic TypeScript fetch, axios, or Python requests.
 - **In-Browser SQLite Sandbox:** Live WebAssembly SQL query runner with structured table rendering and schema inspection.
-- **Regex Visualizer & Inspector:** Safe regex evaluator with flag toggles (`g`, `i`, `m`, `s`) and match token breakdowns.
+- **Regex Visualizer & Inspector:** Safe regex evaluator with flag toggles (g, i, m, s) and match token breakdowns.
 - **Unicode JWT Decoder:** Decodes JWT headers and payload claims with full UTF-8/international character support.
 
-### 3. ğŸ§  MindVault: Zero-Cloud Knowledge Base & SQLite FTS5
+### 3. MindVault: Zero-Cloud Knowledge Base & SQLite FTS5
 - **Structured Engineering Documentation:** Architectural Decision Records (ADRs), McKinsey MECE issue trees, and daily engineering dev-logs.
 - **Sub-5ms In-Memory FTS5 Search:** BM25 lexical token index with regex sanitization and contextual snippet extraction.
 - **Bi-Directional Code Linking:** Connects architectural decisions directly to codebase symbols and files.
 
-### 4. ğŸ¤– Grounded Context Copilot
+### 4. Grounded Context Copilot
 - **Deterministic Context Synthesis:** Synthesizes technical answers strictly grounded in loaded repository ASTs and MindVault notes.
-- **Source Citation Badges:** Attaches verifiable line anchors (`[filepath:L10-30]`) to all factual statements.
+- **Source Citation Badges:** Attaches verifiable line anchors ([filepath:L10-30]) to all factual statements.
 
-### 5. ğŸ™ï¸ Voice Scratchpad & Audio Telemetry
+### 5. Voice Scratchpad & Audio Telemetry
 - **60 FPS Real-Time Waveform:** Canvas-rendered sinusoidal frequency wave visualizer powered by the Web Audio API.
 - **MECE Thought Structuring:** Automatically transforms spoken streams into formatted Core Objectives, Mutually Exclusive Action Items, and Technical Specifications.
 
 ---
 
-## âŒ¨ï¸ Keyboard Shortcuts
+## Keyboard Shortcuts
 
 | Shortcut | Action |
 | :--- | :--- |
@@ -111,11 +111,11 @@ graph TD
 
 ---
 
-## ğŸ’» Getting Started
+## Getting Started
 
 ### Live Cockpit
 Access the production build directly in your browser with zero setup:
-ğŸ‘‰ **[https://cagrik34.github.io/zenith-nexus/](https://cagrik34.github.io/zenith-nexus/)**
+👉 **[https://cagrik34.github.io/zenith-nexus/](https://cagrik34.github.io/zenith-nexus/)**
 
 ### Local Development
 
@@ -140,51 +140,51 @@ npm run build
 
 ---
 
-## ğŸ“ Directory Structure
+## Directory Structure
 
 ```
 zenith-nexus/
-â”œâ”€â”€ .github/
-â”‚   â””â”€â”€ workflows/
-â”‚       â”œâ”€â”€ ci.yml              # Continuous Integration & static verification
-â”‚       â””â”€â”€ deploy.yml          # Automated GitHub Pages deployment pipeline
-â”œâ”€â”€ public/                     # Static assets, manifests, and icons
-â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ components/             # Global layout components (Header, Sidebar, Palette)
-â”‚   â”œâ”€â”€ core/                   # AST parser, in-memory FTS5 search engine, sample datasets
-â”‚   â”œâ”€â”€ engines/
-â”‚   â”‚   â”œâ”€â”€ Copilot/            # Grounded offline RAG Copilot view
-â”‚   â”‚   â”œâ”€â”€ DevForge/           # 5-in-1 developer multi-tool hub
-â”‚   â”‚   â”œâ”€â”€ MindVault/          # Markdown Second Brain & ADR manager
-â”‚   â”‚   â”œâ”€â”€ RepoSense/          # 120 FPS Canvas codebase topology visualizer
-â”‚   â”‚   â””â”€â”€ VoiceCapture/       # 60 FPS Web Audio visualizer & MECE extractor
-â”‚   â”œâ”€â”€ hooks/                  # Global reactive hooks & keyboard shortcut dispatcher
-â”‚   â”œâ”€â”€ styles/                 # Design tokens & glassmorphism system
-â”‚   â”œâ”€â”€ types/                  # Strict TypeScript domain interfaces
-â”‚   â”œâ”€â”€ App.tsx                 # Root cockpit orchestrator
-â”‚   â”œâ”€â”€ index.css               # Core CSS tokens & animations
-â”‚   â””â”€â”€ main.tsx                # React 19 bootstrap entry
-â”œâ”€â”€ index.html                  # HTML5 entry document
-â”œâ”€â”€ package.json                # Dependencies and build scripts
-â”œâ”€â”€ tsconfig.json               # Strict TypeScript configuration
-â””â”€â”€ vite.config.ts              # Vite 6 bundle optimization & relative pathing
+├── .github/
+│   └── workflows/
+│       ├── ci.yml              # Continuous Integration & static verification
+│       └── deploy.yml          # Automated GitHub Pages deployment pipeline
+├── public/                     # Static assets, manifests, and icons
+├── src/
+│   ├── components/             # Global layout components (Header, Sidebar, Palette)
+│   ├── core/                   # AST parser, in-memory FTS5 search engine, sample datasets
+│   ├── engines/
+│   │   ├── Copilot/            # Grounded offline RAG Copilot view
+│   │   ├── DevForge/           # 5-in-1 developer multi-tool hub
+│   │   ├── MindVault/          # Markdown Second Brain & ADR manager
+│   │   ├── RepoSense/          # 120 FPS Canvas codebase topology visualizer
+│   │   └── VoiceCapture/       # 60 FPS Web Audio visualizer & MECE extractor
+│   ├── hooks/                  # Global reactive hooks & keyboard shortcut dispatcher
+│   ├── styles/                 # Design tokens & glassmorphism system
+│   ├── types/                  # Strict TypeScript domain interfaces
+│   ├── App.tsx                 # Root cockpit orchestrator
+│   ├── index.css               # Core CSS tokens & animations
+│   └── main.tsx                # React 19 bootstrap entry
+├── index.html                  # HTML5 entry document
+├── package.json                # Dependencies and build scripts
+├── tsconfig.json               # Strict TypeScript configuration
+└── vite.config.ts              # Vite 6 bundle optimization & relative pathing
 ```
 
 ---
 
-## ğŸ”’ Security & Client-Side Privacy
+## Security & Client-Side Privacy
 
 - **Client-Side Execution:** All data, codebases, and notes remain exclusively in browser memory (IndexedDB / memory). Zero telemetry is transmitted.
-- **XSS & Injection Protection:** Native React 19 DOM escaping without `dangerouslySetInnerHTML` or `eval()`.
-- **ReDoS Mitigation:** Regex input patterns and test strings are bounded and sanitized via `escapeRegex()` against catastrophic backtracking.
-- **Memory Ingestion Guard:** File ingestion enforces 1 MB file bounds and ignores heavy binaries or package directories (`node_modules`, `.git`).
-- **Least-Privilege CI/CD:** GitHub Actions workflows operate with strictly minimal permissions (`pages: write`, `contents: read`).
+- **XSS & Injection Protection:** Native React 19 DOM escaping without dangerouslySetInnerHTML or eval().
+- **ReDoS Mitigation:** Regex input patterns and test strings are bounded and sanitized via escapeRegex() against catastrophic backtracking.
+- **Memory Ingestion Guard:** File ingestion enforces 1 MB file bounds and ignores heavy binaries or package directories (node_modules, .git).
+- **Least-Privilege CI/CD:** GitHub Actions workflows operate with strictly minimal permissions (pages: write, contents: read).
 
 ---
 
-## ğŸ“„ License & Copyright
+## License & Copyright
 
 Distributed under the MIT License. See [LICENSE](https://github.com/Cagrik34/zenith-nexus/blob/main/LICENSE) for details.
 
-**Author:** Ã‡aÄŸrÄ± Giray KeÅŸan  
-**Copyright:** Â© 2026 Ã‡aÄŸrÄ± Giray KeÅŸan. All Rights Reserved.
+**Author:** Çağrı Giray Keşan  
+**Copyright:** © 2026 Çağrı Giray Keşan. All Rights Reserved.
