@@ -1,4 +1,4 @@
-﻿import type { VaultNote } from '../types';
+import type { VaultNote } from '../types';
 
 export interface FTSResult {
   note: VaultNote;
@@ -19,7 +19,7 @@ export class InMemoryFTSEngine {
   }
 
   private escapeRegex(str: string): string {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
   }
 
   public search(query: string, categoryFilter?: string): FTSResult[] {
@@ -35,42 +35,56 @@ export class InMemoryFTSEngine {
         }));
     }
 
+    // Pre-compile regex matchers once per query
+    const tokenMatchers = rawTokens.map(token => {
+      let rx: RegExp | null = null;
+      try {
+        rx = new RegExp(this.escapeRegex(token), 'g');
+      } catch {
+        rx = null;
+      }
+      return { token, rx };
+    });
+
     const results: FTSResult[] = [];
 
-    for (const note of this.notes) {
+    for (let i = 0; i < this.notes.length; i++) {
+      const note = this.notes[i];
       if (categoryFilter && note.category !== categoryFilter) continue;
 
       const titleLower = note.title.toLowerCase();
       const contentLower = note.content.toLowerCase();
-      const tagsLower = note.tags.map(t => t.toLowerCase());
+      const tagsLower = note.tags;
 
       let score = 0;
       const matchedTokens: string[] = [];
 
-      for (const token of rawTokens) {
+      for (let j = 0; j < tokenMatchers.length; j++) {
+        const { token, rx } = tokenMatchers[j];
         let tokenScore = 0;
+
         if (titleLower.includes(token)) {
           tokenScore += 10;
           matchedTokens.push(token);
         }
-        if (tagsLower.some(t => t.includes(token))) {
-          tokenScore += 6;
-          matchedTokens.push(token);
+
+        for (let k = 0; k < tagsLower.length; k++) {
+          if (tagsLower[k].toLowerCase().includes(token)) {
+            tokenScore += 6;
+            matchedTokens.push(token);
+            break;
+          }
         }
 
-        try {
-          const safeEscaped = this.escapeRegex(token);
-          const occurrences = (contentLower.match(new RegExp(safeEscaped, 'g')) || []).length;
-          if (occurrences > 0) {
-            tokenScore += Math.min(15, occurrences * 2);
+        if (rx) {
+          const matches = contentLower.match(rx);
+          if (matches) {
+            tokenScore += Math.min(15, matches.length * 2);
             matchedTokens.push(token);
           }
-        } catch {
-          // Fallback if regex construction fails
-          if (contentLower.includes(token)) {
-            tokenScore += 3;
-            matchedTokens.push(token);
-          }
+        } else if (contentLower.includes(token)) {
+          tokenScore += 3;
+          matchedTokens.push(token);
         }
 
         score += tokenScore;
