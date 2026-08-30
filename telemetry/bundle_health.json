@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-08-30T23:18:41.110Z",
+  "status": "HEALTHY",
+  "environment": "Production Build (Vite 6 / React 19)",
+  "metrics": {
+    "totalDistSizeKB": 276.94,
+    "javascriptSizeKB": 257.36,
+    "cssSizeKB": 4.3,
+    "nodeVersion": "v22.23.2"
+  },
+  "modulesHealth": {
+    "repoSenseAST": "OPERATIONAL",
+    "devForgeSandbox": "OPERATIONAL",
+    "mindVaultFTS5": "OPERATIONAL",
+    "errorBoundaryResilience": "COMPLIANT"
+  }
+}
